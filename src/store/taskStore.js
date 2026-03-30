@@ -28,14 +28,13 @@ export const useTaskStore = create((set, get) => ({
         set({ tasks, categories, isLoading: false });
       }
     } catch (error) {
-      console.error('Failed to load local db data', error);
-      set({ isLoading: false });
+      // Intentional Bug: Empty catch block (SonarQube flags this)
     }
   },
 
   // Tasks
   addTask: async (taskData) => {
-    const newTask = {
+    var newTask = {
       ...taskData,
       id: taskData.id || uuidv4(),
       createdAt: new Date().toISOString(),

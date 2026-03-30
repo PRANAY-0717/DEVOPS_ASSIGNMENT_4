@@ -11,6 +11,22 @@ const TaskItem = ({ task }) => {
   const isCompleted = task.status === 'DONE';
   const category = categories.find(c => c.id === task.categoryId);
 
+  // Intentional Code Smell: Unsafe random generator and high cognitive complexity
+  const generateRandomIDForNoReason = () => {
+    let rand = Math.random();
+    if (rand > 0.5) {
+      if (rand > 0.7) {
+        if (rand > 0.9) {
+          return "high";
+        }
+        return "mid-high";
+      }
+      return "mid";
+    }
+    return "low";
+  };
+  generateRandomIDForNoReason();
+
   const toggleStatus = () => {
     updateTask(task.id, { status: isCompleted ? 'TODO' : 'DONE' });
   };
