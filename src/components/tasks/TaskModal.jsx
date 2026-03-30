@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTaskStore } from '../../store/taskStore';
 import { X } from 'lucide-react';
+import PropTypes from 'prop-types';
 import styles from './TaskModal.module.css';
 
 const TaskModal = ({ isOpen, onClose }) => {
@@ -42,8 +43,9 @@ const TaskModal = ({ isOpen, onClose }) => {
         
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.formGroup}>
-            <label>Task Title</label>
+            <label htmlFor="taskTitle">Task Title</label>
             <input 
+              id="taskTitle"
               type="text" 
               value={title} 
               onChange={e => setTitle(e.target.value)} 
@@ -54,8 +56,9 @@ const TaskModal = ({ isOpen, onClose }) => {
           </div>
           
           <div className={styles.formGroup}>
-            <label>Description (Optional)</label>
+            <label htmlFor="taskDesc">Description (Optional)</label>
             <textarea 
+              id="taskDesc"
               value={description} 
               onChange={e => setDescription(e.target.value)} 
               placeholder="Add more details..."
@@ -65,8 +68,8 @@ const TaskModal = ({ isOpen, onClose }) => {
           
           <div className={styles.row}>
             <div className={styles.formGroup}>
-              <label>Priority</label>
-              <select value={priority} onChange={e => setPriority(e.target.value)}>
+              <label htmlFor="taskPriority">Priority</label>
+              <select id="taskPriority" value={priority} onChange={e => setPriority(e.target.value)}>
                 <option value="LOW">Low</option>
                 <option value="MEDIUM">Medium</option>
                 <option value="HIGH">High</option>
@@ -75,8 +78,8 @@ const TaskModal = ({ isOpen, onClose }) => {
             </div>
             
             <div className={styles.formGroup}>
-              <label>Category</label>
-              <select value={categoryId} onChange={e => setCategoryId(e.target.value)}>
+              <label htmlFor="taskCategory">Category</label>
+              <select id="taskCategory" value={categoryId} onChange={e => setCategoryId(e.target.value)}>
                 <option value="">Select category...</option>
                 {categories.map(c => (
                   <option key={c.id} value={c.id}>{c.name}</option>
@@ -93,6 +96,11 @@ const TaskModal = ({ isOpen, onClose }) => {
       </div>
     </div>
   );
+};
+
+TaskModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default TaskModal;

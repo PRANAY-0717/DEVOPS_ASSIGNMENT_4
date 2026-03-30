@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useTaskStore } from '../../store/taskStore';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import PropTypes from 'prop-types';
 import styles from './DashboardLayout.module.css';
 
 const DashboardLayout = ({ children }) => {
@@ -27,6 +28,10 @@ const DashboardLayout = ({ children }) => {
       </div>
     </div>
   );
+};
+
+DashboardLayout.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default DashboardLayout;

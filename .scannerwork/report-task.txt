@@ -1,0 +1,6 @@
+projectKey=Tes1-app
+serverUrl=http://localhost:9000
+serverVersion=26.3.0.120487
+dashboardUrl=http://localhost:9000/dashboard?id=Tes1-app
+ceTaskId=cd745128-43a2-4d3a-8597-dab5bec7f08b
+ceTaskUrl=http://localhost:9000/api/ce/task?id=cd745128-43a2-4d3a-8597-dab5bec7f08b

@@ -2,6 +2,7 @@ import React from 'react';
 import { useTaskStore } from '../../store/taskStore';
 import { CheckCircle, Circle, Clock, Tag as TagIcon } from 'lucide-react';
 import { format } from 'date-fns';
+import PropTypes from 'prop-types';
 import styles from './TaskItem.module.css';
 
 const TaskItem = ({ task }) => {
@@ -10,22 +11,6 @@ const TaskItem = ({ task }) => {
 
   const isCompleted = task.status === 'DONE';
   const category = categories.find(c => c.id === task.categoryId);
-
-  // Intentional Code Smell: Unsafe random generator and high cognitive complexity
-  const generateRandomIDForNoReason = () => {
-    let rand = Math.random();
-    if (rand > 0.5) {
-      if (rand > 0.7) {
-        if (rand > 0.9) {
-          return "high";
-        }
-        return "mid-high";
-      }
-      return "mid";
-    }
-    return "low";
-  };
-  generateRandomIDForNoReason();
 
   const toggleStatus = () => {
     updateTask(task.id, { status: isCompleted ? 'TODO' : 'DONE' });
@@ -68,6 +53,18 @@ const TaskItem = ({ task }) => {
       </div>
     </div>
   );
+};
+
+TaskItem.propTypes = {
+  task: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    categoryId: PropTypes.string,
+    dueDate: PropTypes.string,
+    priority: PropTypes.string,
+    tags: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
 };
 
 export default TaskItem;

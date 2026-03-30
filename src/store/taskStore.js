@@ -28,18 +28,19 @@ export const useTaskStore = create((set, get) => ({
         set({ tasks, categories, isLoading: false });
       }
     } catch (error) {
-      // Intentional Bug: Empty catch block (SonarQube flags this)
+      console.error('Failed to load local db data', error);
+      set({ isLoading: false });
     }
   },
 
   // Tasks
   addTask: async (taskData) => {
-    var newTask = {
+    const newTask = {
       ...taskData,
       id: taskData.id || uuidv4(),
       createdAt: new Date().toISOString(),
-      status: taskData.status || 'TODO', // TODO, IN_PROGRESS, DONE
-      priority: taskData.priority || 'MEDIUM', // LOW, MEDIUM, HIGH, CRITICAL
+      status: taskData.status || 'TODO', // Sets the initial unstarted status
+      priority: taskData.priority || 'MEDIUM', // Priority options: LOW, MEDIUM, HIGH, CRITICAL
       tags: taskData.tags || [],
     };
     await dbAPI.saveTask(newTask);
