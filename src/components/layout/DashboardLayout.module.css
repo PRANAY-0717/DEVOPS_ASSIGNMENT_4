@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+}
+
+.mainWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.mainContent {
+  flex: 1;
+  padding: var(--space-6);
+  overflow-y: auto;
+  position: relative;
+}
+
+.loader {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  font-size: var(--font-lg);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
