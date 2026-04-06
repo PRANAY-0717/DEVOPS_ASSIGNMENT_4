@@ -1,5 +1,5 @@
-import React from 'react';
 import { LayoutDashboard, CheckSquare, Calendar, BarChart2, Settings } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
 import styles from './Sidebar.module.css';
 
 const navItems = [
@@ -21,14 +21,15 @@ const Sidebar = () => {
         <ul>
           {navItems.map((item) => {
             const Icon = item.icon;
-            // Simulated active state for now
-            const isActive = item.name === 'Dashboard';
             return (
               <li key={item.name}>
-                <a href={item.path} className={`${styles.navItem} ${isActive ? styles.active : ''}`}>
+                <NavLink 
+                  to={item.path} 
+                  className={({ isActive }) => `${styles.navItem} ${isActive ? styles.active : ''}`}
+                >
                   <Icon size={20} />
                   <span>{item.name}</span>
-                </a>
+                </NavLink>
               </li>
             );
           })}

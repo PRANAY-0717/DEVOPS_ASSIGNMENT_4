@@ -1,17 +1,18 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import DashboardLayout from './components/layout/DashboardLayout';
-import TaskList from './components/tasks/TaskList';
+import Dashboard from './pages/Dashboard';
+import PlaceholderPage from './pages/PlaceholderPage';
 
 function App() {
   return (
     <DashboardLayout>
-      <div style={{ marginBottom: 'var(--space-6)' }}>
-        <h1 style={{ fontSize: 'var(--font-2xl)', fontWeight: '700' }}>Dashboard Overview</h1>
-        <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--space-2)' }}>
-          Welcome back. Here is your smart, local-first productivity workspace.
-        </p>
-      </div>
-      <TaskList />
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/tasks" element={<Dashboard title="Tasks Management" />} />
+        <Route path="/calendar" element={<PlaceholderPage title="Calendar & Events" />} />
+        <Route path="/analytics" element={<PlaceholderPage title="Performance Analytics" />} />
+      </Routes>
     </DashboardLayout>
   );
 }
