@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   // Set base if deploying to GitHub Pages (e.g., /repo-name/)
-  base: process.env.VITE_BASE_PATH || '/',
+  base: '/DEVOPS_ASSIGNMENT_4/',
 })
