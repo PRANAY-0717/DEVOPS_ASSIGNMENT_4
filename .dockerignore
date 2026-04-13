@@ -1,0 +1,7 @@
+node_modules
+dist
+.git
+.github
+.scannerwork
+sonar-project.properties
+README.md
